@@ -1,4 +1,5 @@
 import 'package:cool_stepper/cool_stepper.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:im_stepper/stepper.dart';
 import 'package:uniplace2/Widgets/rounded_input_field.dart';
@@ -14,6 +15,15 @@ class SignUpInstitute extends StatefulWidget {
 }
 
 class _SignUpInstituteState extends State<SignUpInstitute> {
+  String password = "";
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _confirmPasswordController = TextEditingController();
+  TextEditingController _NameController = TextEditingController();
+  TextEditingController _addressController = TextEditingController();
+  TextEditingController _contactController = TextEditingController();
+
   List<CoolStep> getSteps() => [
         CoolStep(
             title: "Basic Info 1",
@@ -23,22 +33,25 @@ class _SignUpInstituteState extends State<SignUpInstitute> {
               child: Column(
                 children: <Widget>[
                   RoundedInputField(
+                    controller: _emailController,
                     hintText: "Email",
                     onChanged: (value) => {},
                     icon: Icons.email,
                   ),
                   RoundedInputField(
+                      controller: _usernameController,
                       hintText: "Username",
                       onChanged: (value) => {},
                       icon: Icons.person),
                   RoundedPasswordField(
+                    controller: _passwordController,
                     hintText: "Password",
-                    onChanged: (value) => {},
+                    onChanged: (value) => {setState(() => password = value)},
                   ),
-                  RoundedInputField(
+                  RoundedPasswordField(
+                    controller: _confirmPasswordController,
                     hintText: "Confirm Password",
                     onChanged: (value) => {},
-                    icon: Icons.lock,
                   ),
                 ],
               ),
@@ -54,14 +67,17 @@ class _SignUpInstituteState extends State<SignUpInstitute> {
               child: Column(
                 children: <Widget>[
                   RoundedInputField(
+                      controller: _NameController,
                       hintText: "Institute Name",
                       onChanged: (value) => {},
                       icon: Icons.email),
                   RoundedInputField(
+                      controller: _addressController,
                       hintText: "Address",
                       onChanged: (value) => {},
                       icon: Icons.email),
                   RoundedInputField(
+                      controller: _contactController,
                       hintText: "Contact",
                       onChanged: (value) => {},
                       icon: Icons.email),
@@ -122,8 +138,15 @@ class _SignUpInstituteState extends State<SignUpInstitute> {
                     showErrorSnackbar: false,
                     steps: getSteps(),
                     onCompleted: () {
-                      //server data sending
-                      //print("Complete");
+                      FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                              email: _emailController.text, password: password)
+                          .then((value) {
+                        print("institute added successfully.");
+                        Navigator.pushNamed(context, "/instituteHome");
+                      }).onError((error, stackTrace) {
+                        print("Error ${error.toString()}");
+                      });
                     }),
               ),
             )

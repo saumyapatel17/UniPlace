@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../Widgets/rounded_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,6 +16,9 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  String password = "";
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -56,13 +60,20 @@ class _BodyState extends State<Body> {
                   ),
                   SizedBox(height: size.height * 0.03),
                   RoundedInputField(
+                    controller: _emailController,
                     hintText: "Your Email",
                     onChanged: (value) {},
                     icon: Icons.email,
                   ),
                   RoundedPasswordField(
+                    controller: _passwordController,
                     hintText: "Password",
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      setState(() {
+                        password = value;
+                        print(password);
+                      });
+                    },
                   ),
                   SizedBox(
                     height: 10,
@@ -79,21 +90,25 @@ class _BodyState extends State<Body> {
                   ),
                   RoundedButton(
                     text: "LOGIN",
-                    press: () {},
+                    press: () {
+                      print(_emailController.text);
+                      print(password);
+                      FirebaseAuth.instance
+                          .signInWithEmailAndPassword(
+                              email: _emailController.text, password: password)
+                          .then((value) => {
+                                print("logging in"),
+                                Navigator.pushNamed(context, '/instituteHome')
+                                    .onError((error, stackTrace) {
+                                  print("Error ${error.toString()}");
+                                })
+                              });
+                    },
                     Width: size.width * 0.45,
                   ),
                   SizedBox(height: size.height * 0.03),
                   AlreadyHaveAnAccountCheck(
-                    press: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) {
-                      //       return SignUpScreen();
-                      //     },
-                      //   ),
-                      // );
-                    },
+                    press: () {},
                   ),
                 ],
               ),

@@ -4,10 +4,12 @@ import '../constants.dart';
 class RoundedPasswordField extends StatefulWidget {
   final ValueChanged<String> onChanged;
   final String hintText;
+  final TextEditingController controller;
   const RoundedPasswordField({
     Key? key,
     required this.hintText,
     required this.onChanged,
+    required this.controller,
   }) : super(key: key);
 
   @override

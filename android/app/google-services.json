@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "214548135666",
+    "project_id": "uniplace-16123",
+    "storage_bucket": "uniplace-16123.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214548135666:android:77d9709363c28482ef5a6b",
+        "android_client_info": {
+          "package_name": "com.example.uniplace2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214548135666-o9mqo4q4k1hfododv1uhgoprjb5pts1h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.uniplace2",
+            "certificate_hash": "8b778f27ef5471da2cea5ff98a90d6d3cd25f970"
+          }
+        },
+        {
+          "client_id": "214548135666-ao2j0dr2mrk9lk984ohnp9uig3ch6vi4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhHgKx-xJ6p39TnsTQMlBbiapp5vTEo1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214548135666-ao2j0dr2mrk9lk984ohnp9uig3ch6vi4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

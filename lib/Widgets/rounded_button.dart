@@ -30,7 +30,9 @@ class _RoundedButtonState extends State<RoundedButton> {
               widget.text,
               style: kRoundedButtonTextStyle,
             ),
-            onPressed: widget.press(),
+            onPressed: () {
+              widget.press();
+            },
             style: ButtonStyle(
               backgroundColor: kRoundedButtonBGC,
               foregroundColor: kRoundedButtonFGC,

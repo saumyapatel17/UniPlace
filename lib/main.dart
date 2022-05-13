@@ -1,25 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:uniplace2/Pages/Signin/signin_screen.dart';
 import 'package:uniplace2/Pages/Signup/signup_screen.dart';
 import 'package:uniplace2/Pages/Signup/signup_screen_std.dart';
 import 'package:uniplace2/Pages/Welcome/welcome_screen.dart';
-import 'package:uniplace2/Pages/views/PlacementAdmin/Explore/add_company_pa.dart';
-import 'package:uniplace2/Pages/views/PlacementAdmin/Explore/company_pa.dart';
-import 'package:uniplace2/Pages/views/PlacementAdmin/Explore/explore_pa.dart';
-import 'package:uniplace2/Pages/views/Student/Explore/company_std.dart';
+import 'package:uniplace2/Pages/views/PlacementAdmin/Home/home_pa.dart';
 import 'package:uniplace2/Pages/views/Student/Explore/explore_std.dart';
-import 'package:uniplace2/Pages/views/Student/Profile/add_skills_std.dart';
-import 'package:uniplace2/Pages/views/Student/Profile/profile_std.dart';
-import 'package:uniplace2/Pages/views/Student/Results/ResultsStd.dart';
-import 'package:uniplace2/Pages/views/Student/Results/Results_std_view.dart';
-import 'Pages/Signup/signup_screen_institute.dart';
-import 'Pages/views/Student/Application/ApplcationStd.dart';
-import 'Pages/views/Student/Application/view_your_application_std.dart';
-import 'Pages/views/Student/Explore/application_apply.dart';
-import 'Pages/views/Student/Home/home_std.dart';
 
-void main() {
+import 'Pages/Signup/signup_screen_institute.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -40,12 +33,15 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       //debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        "/": (context) => WelcomeScreen(),
-        "/login": (context) => SigninScreen(),
-        "/signup": (context) => SignUpScreen(),
-      },
+      // initialRoute: '/',
+      // routes: {
+      //   "/": (context) => WelcomeScreen(),
+      //   "/login": (context) => SigninScreen(),
+      //   "/signup": (context) => SignUpScreen(),
+      //   "/institute": (context) => SignUpInstitute(),
+      //   "/student": (context) => SignUpStd(),
+      //   "/instituteHome": (context) => HomePA(),
+      // },
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.blue,

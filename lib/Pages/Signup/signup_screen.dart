@@ -44,17 +44,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(
                     height: size.height * 0.03,
                   ),
-                  // RoundedButton(
-                  //   text: "Institute",
-                  //   press: () {},
-                  // ),
-                  // RoundedButton(
-                  //   text: "Student",
-                  //   press: () {},
-                  // ),
+                  RoundedButton(
+                    text: "Institute",
+                    press: () {
+                      Navigator.pushReplacementNamed(context, "/institute");
+                    },
+                    Width: size.width * 0.5,
+                  ),
+                  RoundedButton(
+                    text: "Student",
+                    press: () {
+                      Navigator.pushReplacementNamed(context, "/student");
+                    },
+                    Width: size.width * 0.5,
+                  ),
                   // RoundedButton(
                   //   text: "Faculty",
                   //   press: () {},
+                  //   Width: size.width * 0.5,
                   // ),
                 ],
               )),

@@ -18,6 +18,12 @@ class SignUpStd extends StatefulWidget {
 }
 
 class _SignUpStdState extends State<SignUpStd> {
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController usernamecontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+  TextEditingController confirmpasswordcontroller = TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController contactcontroller = TextEditingController();
   String query = "";
   List<CoolStep> getSteps() => [
         CoolStep(
@@ -42,18 +48,22 @@ class _SignUpStdState extends State<SignUpStd> {
                 children: <Widget>[
                   RoundedInputField(
                     hintText: "Email",
+                    controller: emailcontroller,
                     onChanged: (value) => {},
                     icon: Icons.email,
                   ),
                   RoundedInputField(
+                      controller: usernamecontroller,
                       hintText: "Username",
                       onChanged: (value) => {},
                       icon: Icons.person),
                   RoundedPasswordField(
+                    controller: passwordcontroller,
                     hintText: "Password",
                     onChanged: (value) => {},
                   ),
                   RoundedPasswordField(
+                    controller: confirmpasswordcontroller,
                     hintText: "Confirm Password",
                     onChanged: (value) => {},
                   ),
@@ -71,6 +81,7 @@ class _SignUpStdState extends State<SignUpStd> {
               child: Column(
                 children: <Widget>[
                   RoundedInputField(
+                    controller: namecontroller,
                     hintText: "Name",
                     onChanged: (value) => {},
                     icon: Icons.abc,
@@ -82,6 +93,7 @@ class _SignUpStdState extends State<SignUpStd> {
                       hintText: "DOB"),
                   GenderRadio(),
                   RoundedInputField(
+                    controller: contactcontroller,
                     hintText: "Contact",
                     onChanged: (value) => {},
                     icon: Icons.call,

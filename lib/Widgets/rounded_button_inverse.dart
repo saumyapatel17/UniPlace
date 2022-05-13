@@ -27,7 +27,9 @@ class _RoundedButtonInverseState extends State<RoundedButtonInverse> {
               widget.text,
               style: kRoundedButtonTextStyle,
             ),
-            onPressed: widget.press(),
+            onPressed: () {
+              widget.press();
+            },
             style: ButtonStyle(
               backgroundColor: kRoundedButtonFGC,
               foregroundColor: kRoundedButtonBGC,
